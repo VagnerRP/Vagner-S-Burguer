@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h2>Vagner'S Burguer</h2>
+    </header>
+    
+    <main>
+        <section id="menu">
+            <h2>Cardápio</h2>
+            <div class="category">
+                <h3>Hambúrgueres</h3>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Hambúrguer Clássico" data-price="20.99">
+                    <img src="imagens/hamburguersimples.jpg" alt="Hambúrguer Clássico" class="item-image">
+                    Hambúrguer Clássico - R$20,99              
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>                    
+                </label>
+                    Pão de gergilim, maionese, queijo, hamburguer de carne.
+                    <br>
+                    <br>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Hambúrguer Gourmet" data-price="21.99">
+                    <img src="imagens/hamburguergourmet.jpg" alt="Hambúrguer Gourmet" class="item-image">
+                    Hambúrguer Gourmet - R$21,99
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                Pão de gergilim, maionese, cheddar, molho do chefe, alface, tomate,hamburguer de carne.
+                <br>
+                <br>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Hambúrguer Premium" data-price="32.99">
+                    <img src="imagens/hamburguerpremium.jpg" alt="Hambúrguer Premium" class="item-image">
+                    Hambúrguer Premium - R$32,99
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                    Pão de gergilim, maionese, alface, molho especial da casa, molho do chefe, queijo, cheddar, tomate, bacon, duplo hamburguer de carne.
+                    <br>
+                    <br>
+            </div>
+            <div class="category">
+                <h3>Salgados</h3>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Coxinha" data-price="7.98">
+                    <img src="imagens/coxinha.jpg" alt="Coxinha" class="item-image">
+                    Coxinha - R$7,98
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Bolinho de Queijo" data-price="7.98">
+                    <img src="imagens/bolinhodequeijo.jpg" alt="Bolinho de Queijo" class="item-image">
+                    Bolinho de Queijo - R$7,98
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Risole" data-price="7.98">
+                    <img src="imagens/risole.jpg" alt="Risole" class="item-image">
+                    Risole de calabresa - R$7,98
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+            </div>
+            <div class="category">
+                <h3>Bebidas</h3>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Coca-Cola Lata 350ml" data-price="7.99">
+                    <img src="imagens/coca.jpg" alt="Coca-Cola Lata 350ml" class="item-image">
+                    Coca-Cola Lata 350ml - R$7,99
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Guaraná Antarctica" data-price="6.99">
+                    <img src="imagens/guaranaAntartica.jpg" alt="Guaraná Antarctica" class="item-image">
+                    Guaraná Antarctica - R$6,99
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+                <label>
+                    <input type="checkbox" class="item-checkbox" data-name="Fanta Laranja" data-price="6.99">
+                    <img src="imagens/fanta.jpg" alt="Fanta Laranja" class="item-image">
+                    Fanta Laranja - R$6,99
+                    <input type="number" class="item-quantity" value="0" min="0" disabled>
+                </label>
+            </div>
+            <div class="category">
+                <h3>Complementos</h3>
+                <label>                    
+                    <span>Deseja Catchup?</span>
+                    <input type="radio" name="catchup" value="sim" checked> Sim
+                    <input type="radio" name="catchup" value="Não" checked> Não
+                </label>
+            </div>
+        </section>
+        
+        <section id="cart">
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total">Total: R$0,00</div>
+            <button onclick="finalizeOrder()">Finalizar Pedido</button>
+        </section>
+        
+        <section id="checkout" style="display:none;">
+            <h2>Finalização do Pedido</h2>
+            <form id="checkout-form" onsubmit="submitOrder(event)">
+                <label>
+                    Nome Completo:
+                    <input type="text" name="name" required>
+                </label>
+                <label>
+                    Endereço para Entrega:
+                    <input type="text" name="address" required>
+                </label>
+                <fieldset>
+                    <legend>Forma de Pagamento</legend>
+                    <label>
+                        <input type="radio" name="payment" value="credit-card" required>
+                        Crédito
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="credit-card" required>
+                        Débito
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="pix" required>
+                        Pix
+                    </label>
+                </fieldset>
+                <button type="submit">Confirmar Pedido</button>
+                <button type="button" onclick="cancelOrder()">Cancelar</button>
+            </form>
+            <div id="order-summary"></div>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
